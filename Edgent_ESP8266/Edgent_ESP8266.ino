@@ -1,3 +1,5 @@
+//test github
+
 // Fill-in information from your Blynk Template here
 #define BLYNK_TEMPLATE_ID "TMPLdPZFcY9k"
 #define BLYNK_DEVICE_NAME "BMS copy"
@@ -22,11 +24,10 @@ DHT dht(DHTPIN, DHTTYPE);
 WidgetLED led(V0);
 BlynkTimer timer;
 
-//#define led1 14 //D5
 #define led2 12 //D6
 #define led3 13 //D7
 #define led4 15 //D8 
-//#define button1 5 //D1
+
 #define button2 4 //D2
 #define button3 0 //D3
 #define button4 2 //D4
@@ -37,7 +38,7 @@ boolean bt4_state=HIGH;
 unsigned long times=millis();
 WidgetLED led_connect(V0);
 
-// V0 LED Widget is blinking
+
 void blinkLedWidget(){
   if (led.getValue()) {
     led.off();
@@ -51,11 +52,11 @@ void setup()
   
   Serial.begin(115200);
   delay(100);
-//  pinMode(led1, OUTPUT);
+
   pinMode(led2, OUTPUT);
   pinMode(led3, OUTPUT);
   pinMode(led4, OUTPUT);
-//  pinMode(button1,INPUT_PULLUP);
+
   pinMode(button2,INPUT_PULLUP);
   pinMode(button3,INPUT_PULLUP);
   pinMode(button4,INPUT_PULLUP);
@@ -75,8 +76,8 @@ void loop() {
       Serial.println(F("Failed to read from DHT sensor!"));
       return;
     }
-    Blynk.virtualWrite(V1,t);
-    Blynk.virtualWrite(V2,h);
+    Blynk.virtualWrite(V6,t);
+    Blynk.virtualWrite(V7,h);
     Serial.print(F("Temperature: "));
     Serial.print(t);
     Serial.print(F("°C "));
@@ -99,10 +100,6 @@ void loop() {
 }
 
 
-BLYNK_WRITE(V1){
-  int p = param.asInt();
-//  digitalWrite(led1, p); 
-}
 BLYNK_WRITE(V2){
   int p = param.asInt();
   digitalWrite(led2, p); 
@@ -116,16 +113,6 @@ BLYNK_WRITE(V4){
   digitalWrite(led4, p); 
 }
 void check_button(){
-//  if(digitalRead(button1)==LOW){
-//    if(bt1_state==HIGH){
-//      digitalWrite(led1,!digitalRead(led1));
-//      Blynk.virtualWrite(V1,digitalRead(led1));
-//      bt1_state=LOW;
-//      delay(200);
-//    }
-//  }else{
-//    bt1_state=HIGH;
-//  }
   if(digitalRead(button2)==LOW){
     if(bt2_state==HIGH){
       digitalWrite(led2,!digitalRead(led2));
