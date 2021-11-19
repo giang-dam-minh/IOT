@@ -36,6 +36,7 @@ boolean bt2_state=HIGH;
 boolean bt3_state=HIGH;
 boolean bt4_state=HIGH;
 unsigned long times=millis();
+unsigned long times2=millis();
 WidgetLED led_connect(V0);
 
 
@@ -68,7 +69,7 @@ void setup()
 void loop() {
   BlynkEdgent.run();
   timer.run();
-  if(millis()-times>2000){
+  if(millis()-times2>1000){
     // Reading temperature or humidity
     float t = dht.readTemperature();
     float h = dht.readHumidity();
@@ -84,7 +85,7 @@ void loop() {
     Serial.print(F("Humidity: "));
     Serial.print(h);
     Serial.println(F("%"));
-    times = millis();
+    times2 = millis();
   }
   
   if(millis()-times>1000){
